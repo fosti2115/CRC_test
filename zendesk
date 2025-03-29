@@ -1,0 +1,15 @@
+import requests
+def create_zendesk_ticket(subject, description):
+    zendesk_api_key = "o9mEpC3gjzK9zKLnQzjNnpZb40fGRNtA9QHLFXRG"
+    url = "https://your_zendesk_instance/api/v2/tickets.json"
+    headers = {"Authorization": f"Bearer {zendesk_api_key}"}
+    data = {
+        "ticket": {
+            "subject": subject,
+            "description": description
+        }
+    }
+    response = requests.post(url, headers=headers, json=data)
+    return response.json()
+# Example usage
+# create_zendesk_ticket("Test Ticket", "This is a test ticket.")
