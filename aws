@@ -1,0 +1,15 @@
+import boto3
+
+aws_access_key_id = "AKIARZ5BMTYGTB5I2LDG"
+aws_secret_access_key = "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"
+
+# Inicjalizacja klienta S3
+s3_client = boto3.client(
+    "s3",
+    aws_access_key_id=aws_access_key_id,
+    aws_secret_access_key=aws_secret_access_key,
+)
+
+# Pobranie listy bucketów
+buckets = s3_client.list_buckets()
+print("Buckets:", [bucket["Name"] for bucket in buckets["Buckets"]])
